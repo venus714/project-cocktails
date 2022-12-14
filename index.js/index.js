@@ -1,5 +1,5 @@
-const link=("www.thecocktaildb.com/api/json/v1/1/random.php")
-const slink=('www.thecocktaildb.com/api/json/v1/1/search.php?s')
+const Link="https://www.thecocktaildb.com/api/json/v1/1/random.php"
+const slink='https//www.thecocktaildb.com/api/json/v1/1/search.php?s'
 document.addEventListener("DOMContentLoad",()=>{
    //Data on all fish
    const datayanav=document.getElementById("fishinfo")
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoad",()=>{
       serchresult.style.display="none"
     })
     //create returned card fish iformation
-    const createfish = (image,Namee ,infor)
+    const createeFish = (image,Namee ,infor)
     const cardfish = document.createElement('div')
     cardfish.classList.add('card','col-12' ,'px-0', 'mb-3')
     const cardDiv = document.createElement('div')
@@ -70,40 +70,43 @@ document.addEventListener("DOMContentLoad",()=>{
 
         return cardDiv
    })
+   const createSearchResults = (name, image,) => {
+    const rootDiv = document.createElement('div')
+    rootDiv.classList.add('col-3', 'p-1')
+
+    const cardDiv = document.createElement('div')
+    cardDiv.classList.add('card', 'px-0', 'h-100')
+
+    const fishImg = document.createElement('img')
+    fishImg.classList.add('card-img-top')
+    fishImg.src = image
+
+    const fishTitle = document.createElement('h6')
+    fishTitle.classList.add('p-2')
+    fishTitle.innerText = name
+
+
+    cardDiv.appendChild(fishImg)
+    cardDiv.appendChild(fishTitle)
+
+    rootDiv.appendChild(cardDiv)
+    return rootDiv
+   }
 
         //load 
         const loadfish = () => {
-         fetch(link)
+         fetch(Link)
              .then((res) => res.json())
-             .then((data) =>{
-                const Namee = drinks.strDrink
-                  const infor = strIntructions
-                  const image = strDrinkThumb
-                  const fishElement = createRandomMeal(image, Namee, infor)
-                  datayanav.appendChild(fishElement)
-              }
+             .then((data) =>{ 
+                  const drinkdata=data.drinks
+                  const Namee = drinkdata.strDrink
+                   const infor = drinkdata.strIntructions
+                   const image = drinkdata.strDrinkThumb
+                   const fishElement = createeFish(drinkdata,image, Namee, infor)
+                   datayanav.appendChild(fishElement)
+               }
             )}
-             const createSearchResults = (name, image,) => {
-              const rootDiv = document.createElement('div')
-              rootDiv.classList.add('col-3', 'p-1')
-      
-              const cardDiv = document.createElement('div')
-              cardDiv.classList.add('card', 'px-0', 'h-100')
-      
-              const fishImg = document.createElement('img')
-              fishImg.classList.add('card-img-top')
-              fishImg.src = image
-      
-              const fishTitle = document.createElement('h6')
-              fishTitle.classList.add('p-2')
-              fishTitle.innerText = name
-              cardDiv.appendChild(fishImg)
-              cardDiv.appendChild(fishTitle)
-              rootDiv.appendChild(cardDiv)
-              return rootDiv
-             }
              
         
              
-             
-             loadfish(); 
+              loadfish(); 
