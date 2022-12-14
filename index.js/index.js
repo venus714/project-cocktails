@@ -1,4 +1,5 @@
-const link=("https://www.fishwatch.gov/api/species")
+const link=("www.thecocktaildb.com/api/json/v1/1/random.php")
+const slink=('www.thecocktaildb.com/api/json/v1/1/search.php?s')
 document.addEventListener("DOMContentLoad",()=>{
    //Data on all fish
    const datayanav=document.getElementById("fishinfo")
@@ -74,16 +75,35 @@ document.addEventListener("DOMContentLoad",()=>{
         const loadfish = () => {
          fetch(link)
              .then((res) => res.json())
-             .then((data) => {
-                 const Namee = SpeciesName
-                 const infor = biology[0]
-                 const image = src
-                 const fishElement = createRandomMeal(image, Namee, infor)
-                 datayanav.appendChild(fishElement)
-             })
-            }
+             .then((data) =>{
+                const Namee = drinks.strDrink
+                  const infor = strIntructions
+                  const image = strDrinkThumb
+                  const fishElement = createRandomMeal(image, Namee, infor)
+                  datayanav.appendChild(fishElement)
+              }
+            )}
+             const createSearchResults = (name, image,) => {
+              const rootDiv = document.createElement('div')
+              rootDiv.classList.add('col-3', 'p-1')
+      
+              const cardDiv = document.createElement('div')
+              cardDiv.classList.add('card', 'px-0', 'h-100')
+      
+              const fishImg = document.createElement('img')
+              fishImg.classList.add('card-img-top')
+              fishImg.src = image
+      
+              const fishTitle = document.createElement('h6')
+              fishTitle.classList.add('p-2')
+              fishTitle.innerText = name
+              cardDiv.appendChild(fishImg)
+              cardDiv.appendChild(fishTitle)
+              rootDiv.appendChild(cardDiv)
+              return rootDiv
+             }
+             
+        
              
              
-             loadfish();
-
-            
+             loadfish(); 
