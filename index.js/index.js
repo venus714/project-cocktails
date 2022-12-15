@@ -2,11 +2,11 @@ const Link="https://www.thecocktaildb.com/api/json/v1/1/random.php"
 const slink='https//www.thecocktaildb.com/api/json/v1/1/search.php?s'
 document.addEventListener("DOMContentLoad",()=>{
    //Data on all fish
-   const datayanav=document.getElementById("fishinfo")
+   const datayanav=document.getElementById("drinks")
    const categorydata=document.getElementById("category-link")
    const serchresult=document.getElementById("serch-result")
    //Data on serach
-   const serachdata=document.getElementById("searchBtn")
+   const serachdata=document.getElementById("search")
    const searchform=document.getElementById("search-form")
    //click events for search
    searchform.addEventListener('click',()=> {
@@ -21,16 +21,18 @@ document.addEventListener("DOMContentLoad",()=>{
       serchresult.style.display="none"
     })
     //search submit listener
-    searchform.addEventListener('submit',()=>{
+    searchform.addEventListener('submit',(e)=>{
       e.preventDefault();
       const query = serachdata.value
-      searchmeal(query)
+      searchDrink(query)
       datayanav.style.display="none"
       categorydata.style.display="none"
       serchresult.style.display="none"
+      serchresult.removeAttribute('hidden')
     })
     //create returned card fish iformation
-    const createeFish = (image,Namee ,infor)
+    const createeFish = (image, Namee, infor) => {
+    
     const cardfish = document.createElement('div')
     cardfish.classList.add('card','col-12' ,'px-0', 'mb-3')
     const cardDiv = document.createElement('div')
@@ -69,8 +71,9 @@ document.addEventListener("DOMContentLoad",()=>{
         cardDiv.appendChild(rowDiv)
 
         return cardDiv
-   })
-   const createSearchResults = (name, image,) => {
+    }
+   
+   const createSearchResults = (Namee, image,) => {
     const rootDiv = document.createElement('div')
     rootDiv.classList.add('col-3', 'p-1')
 
@@ -83,7 +86,7 @@ document.addEventListener("DOMContentLoad",()=>{
 
     const fishTitle = document.createElement('h6')
     fishTitle.classList.add('p-2')
-    fishTitle.innerText = name
+    fishTitle.innerText = Namee
 
 
     cardDiv.appendChild(fishImg)
@@ -97,16 +100,34 @@ document.addEventListener("DOMContentLoad",()=>{
         const loadfish = () => {
          fetch(Link)
              .then((res) => res.json())
-             .then((data) =>{ 
-                  const drinkdata=data.drinks
-                  const Namee = drinkdata.strDrink
+             .then((data) =>{
+                  const drinkdata = data.drinks[0]
+                   const Namee = drinkdata.strDrink
                    const infor = drinkdata.strIntructions
                    const image = drinkdata.strDrinkThumb
-                   const fishElement = createeFish(drinkdata,image, Namee, infor)
+                   const fishElement = createeFish(image, Namee, infor)
                    datayanav.appendChild(fishElement)
                }
             )}
-             
+            //search data
+            const searchDrink = (drink) => {
+              fetch(`${slink}${drink}`)
+                   .then((response) => response.json())
+                   .then((data) => {
+                      const drinkdata = drinkdata.strDrink
+                      const searchResults = drinkdata.map(
+                          drinkData => {
+                              const Namee = drinkdata.strDrink
+                              const image = drinkdata.strDrinkThumb
+                              console.log(Namee)
+                              return createSearchResults(Namee, image)
+                      
+                  })
+                  serchresult.replaceChildren(...searchResults)
+                
+            })}
         
              
               loadfish(); 
+            })
+               
