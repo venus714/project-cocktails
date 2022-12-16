@@ -9,12 +9,15 @@
 </head>
 <body>
     <title>COCKTAILS</title>
+
     <nav class="navbar navbar-expand-lg" style="background-color:#6c8ba1;">
         <div class="container-fluid  mt-3">
           <a class="navbar-brand" href="#">COCKTAILS</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
+          
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
@@ -24,27 +27,36 @@
             </div>
         
 
-                <form class="navbar-nav me-auto d-flex flex-row">
+                <div class="navbar-nav me-auto d-flex flex-row">
                     <a class="nav-item me-2">
                         <a class="text-dark nav-link" href="#" id="category-link">categories</a>
-                    </form>
+                    </div>
                     
 
                 <form class="d-flex" id="search-form">
                     <input class="form-control" type="text" placeholder="Search" id="search"/>
                     <button class="btn btn-outline-info ms-1" id="searchBtn">SEARCH</button>
                 </form>
-              </nav>
-              <div class="container mt-5" id="main-container">
+
+      </nav>
+
+
+      <form>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+      </form>
+             <div>
+                <div class="card" id="main-container">
                 <div class="row" id="drinks">
               </div>
               
-              <div class="row mt-1 mb-2" id="search-result">
-               <h4>search-result</h4>
-            </div>
-
-
-
 
 <script src="/index.js/index.js"></script>
 <script src="/bootstrap.js"></script>
