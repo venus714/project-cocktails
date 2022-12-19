@@ -152,7 +152,7 @@ const clink="https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_D
              //categories
              const categories = () => {
                fetch(clink)
-              .then((res)=> res.json())
+              .then((response)=> res.json())
               .then((data) => {
                 const cdata = data.drinks
                 const celements = cdata.map(
