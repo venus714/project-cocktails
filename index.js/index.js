@@ -1,25 +1,34 @@
 const Link="https://www.thecocktaildb.com/api/json/v1/1/random.php"
-const slink='https//www.thecocktaildb.com/api/json/v1/1/search.php?s'
+const slink="https://www.thecocktaildb.com/api/json/v1/1/search.php?s"
 const clink="https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink"
    //Data on all drinks
    const datayanav=document.getElementById("drinks")
    const categorydata=document.getElementById("catgory")
    const serchresult=document.getElementById("serch-result")
+   const categorylink = document.getElementById("category-link")
    //Data on serach
    const serachdata=document.getElementById("search")
    const searchform=document.getElementById("search-form")
+   const home = document.getElementById('navbarNavDarkDropdown')
 
 
-       categorydata.addEventListener('click', () => {
+       categorylink.addEventListener('click', () => {
         // hide 
         datayanav.style.display = "none"
-      
-        // hide search page
+       // hide search page
         serchresult.style.display = "none"
         // show categories
         categorydata.removeAttribute('hidden')
         categorydata.style.display = "flex"
     })
+    home.addEventListener('click', () => {
+      // hide categories, search and countries
+      datayanav.style.display = "flex"
+      categorydata.style.display = "none"
+      serchresult.style.display = "none"
+
+  })
+
 
     //search submit listener
     searchform.addEventListener('submit',(e)=>{
@@ -28,7 +37,6 @@ const clink="https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_D
       searchDrink(query)
       datayanav.style.display="none"
       categorydata.style.display="none"
-      serchresult.style.display="none"
       serchresult.style.display = "flex"
       serchresult.removeAttribute('hidden')
   
@@ -135,7 +143,7 @@ const clink="https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_D
                    const drinkdata = data.drinks[0]
                    const Namee = drinkdata.strDrink
                    const infor = drinkdata.strInstructions
-                   const image = drinkdata.strDrinkThumb 
+                   const image = drinkdata.strDrinkThumb
                    const fishElement = createeFish(image, Namee, infor)
                    datayanav.append(fishElement)
                
@@ -148,11 +156,11 @@ const clink="https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_D
               .then((data) => {
                 const cdata = data.drinks
                 const celements = cdata.map(
-                    catgory => createCategory(catgory.strDrinkThumb,  catgory.strDrink)
+                    catgory => createCategory(catgory.strDrinkThumb , catgory.strDrink)
                 )
                 categorydata.append(...celements)
             })
-    }
+      }
 
             
             // search data
@@ -175,5 +183,5 @@ const clink="https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_D
         
              
               loadFish(); 
-            categories()
+              categories();
                
