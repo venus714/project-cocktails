@@ -156,7 +156,7 @@ const clink="https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_D
               .then((data) => {
                 const cdata = data.drinks
                 const celements = cdata.map(
-                    catgory => createCategory(catory.strDrink,catgory.strDrinkThumb)
+                    catgory => createCategory(catgory.strDrink,catgory.strDrinkThumb)
                 )
                 categorydata.append(...celements)
             })
