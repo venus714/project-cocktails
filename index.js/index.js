@@ -1,25 +1,26 @@
 const Link="https://www.thecocktaildb.com/api/json/v1/1/random.php"
 const slink='https//www.thecocktaildb.com/api/json/v1/1/search.php?s'
-const clink='https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
-   //Data on all fish
+const clink="https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink"
+   //Data on all drinks
    const datayanav=document.getElementById("drinks")
    const categorydata=document.getElementById("catgory")
    const serchresult=document.getElementById("serch-result")
    //Data on serach
    const serachdata=document.getElementById("search")
    const searchform=document.getElementById("search-form")
-   //click events for search
-   searchform.addEventListener('click',()=> {
-      datayanav.style.display="none"
-      categorydata.style.display="none"
-      serchresult.style.display="none"
-   })
-   //click events for searchbutton
-   serachdata.addEventListener('click',()=>{ 
-      datayanav.style.display="none"
-      categorydata.style.display="none"
-      serchresult.style.display="none"
+
+
+       categorydata.addEventListener('click', () => {
+        // hide 
+        datayanav.style.display = "none"
+      
+        // hide search page
+        serchresult.style.display = "none"
+        // show categories
+        categorydata.removeAttribute('hidden')
+        categorydata.style.display = "flex"
     })
+
     //search submit listener
     searchform.addEventListener('submit',(e)=>{
       e.preventDefault();
@@ -28,6 +29,10 @@ const clink='https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
       datayanav.style.display="none"
       categorydata.style.display="none"
       serchresult.style.display="none"
+      serchresult.style.display = "flex"
+      serchresult.removeAttribute('hidden')
+  
+      
     
     })
     //create returned card drink iformation
@@ -110,7 +115,7 @@ const clink='https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
     cTitle.classList.add('card-title')
     cTitle.innerText = Namee
 
-    // append title and image to card
+    // append 
     cardDiv.appendChild(cImg)
     cardDiv.appendChild(cTitle)
    
@@ -129,7 +134,7 @@ const clink='https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
             
                    const drinkdata = data.drinks[0]
                    const Namee = drinkdata.strDrink
-                   const infor = drinkdata.strIntructions
+                   const infor = drinkdata.strInstructions
                    const image = drinkdata.strDrinkThumb 
                    const fishElement = createeFish(image, Namee, infor)
                    datayanav.append(fishElement)
@@ -143,7 +148,7 @@ const clink='https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
               .then((data) => {
                 const cdata = data.drinks
                 const celements = cdata.map(
-                    catgory => createCategory(catgory.strDrinkThumb, catgory.strDrink)
+                    catgory => createCategory(catgory.strDrinkThumb,  catgory.strDrink)
                 )
                 categorydata.append(...celements)
             })
