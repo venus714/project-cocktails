@@ -9,7 +9,7 @@ const clink="https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_D
    //Data on serach
    const serachdata=document.getElementById("search")
    const searchform=document.getElementById("search-form")
-   const home = document.getElementById('navbarNavDarkDropdown')
+   const home = document.getElementById('home')
 
 
        categorylink.addEventListener('click', () => {
