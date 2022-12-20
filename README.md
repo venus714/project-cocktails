@@ -1,4 +1,4 @@
-
+# COCKTAILS
 Cocktails is an application that displays data about cocktails by fething from a public API,cocktails db.
 
 # Built with
