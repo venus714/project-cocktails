@@ -22,7 +22,7 @@ To use this application you can clone this repository  to your local matchineby 
 
 -Cd into the repository in your terminal:Cd venus714/project-cocktails
 
--Open the code via vs code: code .
+-Open the code via [vs code](https://code.visualstudio.com/): code .
 
 -Open the application by opening the code in a broswer, you can use extensions such as : [Go live](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 
