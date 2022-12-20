@@ -9,7 +9,7 @@ This application was built using
 
 -HTML
 
--Bootstrap
+-[Bootstrap](https://getbootstrap.com/)
 
 -CSS
 
@@ -24,7 +24,7 @@ To use this application you can clone this repository  to your local matchineby 
 
 -Open the code via vs code: code .
 
--Open the application by opening the code in a broswer, you can use extensions such as : Go live
+-Open the application by opening the code in a broswer, you can use extensions such as : [Go live](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 
 An easier way to use the application is to simply navigate to it via the live link below
 
